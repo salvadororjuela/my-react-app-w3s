@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <script src="/React_Learning/my-react-app/src/index.js"></script>
+    <style>
+
+    </style>
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="fluid-container">
+      <!--First Element Created with React-->
+      <div id="root">
+        <h2>First Element Created in index.js</h2>
+      </div>
+      <hr>
+      
+      <!--Class, Class Methods, Objects, Inheritance -->
+      <div class="row text-primary text-center">
+        <script> 
+          class Car {
+            constructor(name) {
+              this.brand = name;
+            }
+          
+            present() {
+              return 'I have a ' + this.brand;
+            }
+          }
+          
+          class Model extends Car { 
+            constructor(name, mod) {
+              super(name);  // Call the partent's constructor method and access to the parent's properties and methods
+              this.model = mod;
+            }  
+            show() {
+              return this.present() + ', it is a ' + this.model
+            }
+          }
+          
+          const mycar = new Model("Ford", "Mustang");
+          document.write(mycar.show());
+        </script>
+      </div>
+      <hr>
+
+      <!-- ARROW FUNCTION -->
+      <div class="row text-primary text-center">
+        <div class="col-xs-12 arrow" style="background-color: rgb(198, 252, 252);">
+          <h2 style="color: red;">Arrow Functions</h2>
+          <br>
+          <h3>A demonstration of a simple arrow function.</h3>
+          <h4 id="arrow" style="background-color:lightblue"></h4>
+        </div>
+        <script>
+          helloarrow = () => {
+            return "Hello World Produced by an Arrow Function";
+          }
+          /* This function could be writen as follows if the function has only one statement
+          and the statement returns a value
+
+          hello = () => "Hello World Produced by an Arrow Function";
+          */
+          document.getElementById("arrow").innerHTML = helloarrow()
+        </script>
+        <br><br><br><br><br><br><br><br><br>
+        <div class="col-xs-12" style="background-color:rgb(198, 252, 252);">
+          <h3>Arrow Function with Parameters</h3>
+          <h4 id="arrowparam" style="background-color:lightblue"></h4>
+          <script>
+            helloparam = (val) => {
+              return "Hello " + val;
+            }
+            document.getElementById("arrowparam").innerHTML = helloparam("Salvador!!!. Produced by an arrow function with parameters");
+            /*
+            Also, if the function has only one parameter the function could be written as follows
+
+            hello = (val) => "Hello " + val;
+            */
+          </script>
+        </div>
+    </div>
+    <hr>
+    <!-- map() Array Methods -->
+    <div class="row text-primary text-center">
+      <h3>map() Array Methods</h3>
+      <p>The .map() method allows you to run a function on each item in the array, returning a new array as the result.
+        In React, map() can be used to generate lists.</p>
+        <div class="col-xs-12" style="background-color:rgb(198, 252, 252);">
+          <p id="arraymap"></p>
+        </div>
+    </div>
+    <br>
+    <hr>
+
+    <!-- DESTRUCTURING -->
+    <div class="row text-primary text-center">
+      <h3>React ES6 DESTRUCTURING</h3>
+      <div class="col-xs-3" style="background-color:rgb(198, 252, 252); margin: 10px 25px">
+        <h4>Destructuring to assigning array items to a variable</h4>
+        <pre>
+const vehicles = ['mustang', 'f-150', 'expedition'];
+
+const [car, truck, suv] = vehicles;
+<p>Destructuring comes in handy when a function returns an array:</p>
+          </pre>
+          <div>
+            <h4 id="results"></h4>
+          </div>
+      </div>
+      <div class="col-xs-3" style="background-color:rgb(198, 252, 252); margin: 10px 25px">
+        <h4>Destructuring Objects</h4>
+        <div>
+          <pre>
+Here is the new way of using an object inside a function with destructuring:
+
+const vehicleOne = {
+  brand: 'Ford',
+  model: 'Mustang',
+  type: 'car',
+  year: 2021, 
+  color: 'red'
+}
+
+myVehicle(vehicleOne);
+
+function myVehicle({type, color, brand, model}) {
+  const message = 'My ' + type + ' is a ' + color + ' ' + brand + ' ' + model + '.';
+}
+          </pre>
+        </div>
+        <h4 id="destobjects"></h4>
+      </div>
+      <div class="col-xs-3" style="background-color:rgb(198, 252, 252); margin: 10px 25px">
+        <h4>destructure deeply nested objects by referencing the nested object then using a colon and curly braces to again destructure the items needed from the nested object:</h4>
+        <div>
+          <pre>
+const vehicleOne = {
+  brand: 'Ford',
+  model: 'Mustang',
+  type: 'car',
+  year: 2021, 
+  color: 'red',
+  registration: {
+    city: 'Houston',
+    state: 'Texas',
+    country: 'USA'
+  }
+}
+
+myVehicle(vehicleOne)
+
+function myVehicle({ model, registration: { state } }) {
+  const message = 'My ' + model + ' is registered in ' + state + '.';
+}
+          </pre>
+        </div>
+        <h4 id="destnestedobjects"></h4>
+      </div>
+    </div>
+    <hr>
+
+    <!-- SPREAD OPERATOR -->
+    <div class="row text-primary text-center">
+      <h3>React SPREAD OPERATOR</h3>
+      <p>The spread operator (...) allows to quickly copy all or part of an existing array or objecto into another array or object</p>
+      <div class="col-xs-5" style="background-color:rgb(198, 252, 252); margin: 15px">
+        <h4>Spread Operator to Copy all or Part of an Existing Array into Another Array</h4>
+        <h5 id="spreadcopy" style="background-color: white;"></h5>
+        <h4>Spread Operator Used in Combination with Destructuring</h4>
+        <h5 id="spreaddestructuring1" style="background-color: white;"></h5>
+        <h5 id="spreaddestructuring2" style="background-color: white;"></h5>
+        <h5 id="spreaddestructuringRest" style="background-color: white;"></h5>
+      </div>
+      <div class="col-xs-5" style="background-color:rgb(198, 252, 252); margin: 15px">
+        <h4>Use the spread operator with objects too.</h4>
+        <div>
+          <pre>
+const myVehicle = {
+  brand: 'Ford',
+  model: 'Mustang',
+  color: 'red'
+}
+
+const updateMyVehicle = {
+  type: 'car',
+  year: 2021, 
+  color: 'yellow'
+}
+            
+const myUpdatedVehicle = {...myVehicle, ...updateMyVehicle}
+          </pre>
+        </div>
+        <h5 id="spreadobjects">Press f12 to See The Result Object in the Console View.</h5>
+      </div>
+    </div>
+    <hr>
+
+      <!-- REACT MODULES--> 
+      <div class="row text-primary text-center">
+        <h3>React MODULES</h3>
+        <p>ES Modules rely on the import and export statements.</p>
+        <div class="col-xs-12" style="background-color:rgb(198, 252, 252); margin: 15px">
+          <h4>JavaScript modules Rely on export and import</h4>
+          <h5 id="modulesexample" style="background-color: white;"></h5>
+          <h4>Default Export</h4>
+          <h5 id="modulesdefault" style="background-color: white;"></h5>
+        </div>
+      </div>
+      <hr>
+
+      <!-- REACT TERNARY OPERATOR--> 
+      <div class="row text-primary text-center">
+        <h3>React TERNARY OPERATOR</h3>
+        <p>The ternary operator is a simplified conditional operator like if / else.</p>
+        <p>Syntax: condition ? &ltexpression if true&gt : &ltexpression if false&gt</p>
+        <div class="col-xs-12" style="background-color:rgb(198, 252, 252); margin: 15px">
+          <h3 id="ternary"></h3>
+          <h5 style="background-color: white;">
+            Try changing the "authenticated" variable to false, and run the code to see what happens.
+          </h5>
+        </div>
+      </div>
+      <hr>
+
+      <!--ReactDOM.render()-->
+      <div class="row text-primary text-center">
+        <h3>ReactDOM.render() Function</h3>
+        <p>The ReactDOM.render() function takes two arguments, HTML code and an HTML element.</p>
+        <p>The purpose of the function is to display the specified HTML code inside the specified HTML element.</p>
+        <div id="rendertable" class="col-xs-12" style="background-color:rgb(246, 255, 168)">
+        
+        </div>
+      </div>
+      <hr>
+
+      <!--React JSX-->
+      <div class="row text-primary text-center">
+        <h3>React JSX</h3>
+        <p>JSX stands for JavaScript XML</p>
+        <p>JSX allows to write HTML in React</p>
+        <div class="col-xs-6" style="background-color:rgb(246, 255, 168)">
+          <h4>Expresions in JSX</h4>
+          <p>The expression can be a React variable, or property, or any other valid JavaScript Expression.</p>
+          <pre>
+Example:
+Execute the expression 5 + 5:
+
+const myElement = &lth1&gtReact is {5 + 5} times better with JSX&lt/h1&gt ;
+          </pre>
+          <div id="expression" style="background-color: white;" ></div>
+        </div>
+        <div class="col-xs-6" style="background-color:rgb(246, 255, 168); margin-bottom: 20px">
+          <h4>One Top Level</h4>
+          <p>The HTML code must be wrapped in ONE top level element.
+
+            So if you like to write two paragraphs, you must put them inside a parent element, like a div element.</p>
+          <pre>
+Example
+Wrap two paragraphs inside one DIV element:
+
+const myElement = (
+  &ltdiv&gl
+    &ltp&glI am a paragraph.&lt/p&gl
+    &ltp&glI am a paragraph too.&lt/p&gl
+  &lt/div&gl
+);
+          </pre>
+          <div id="onetoplevel" style="background-color: white;"></div>
+          <p>Alternatively, you can use a "fragment"to wrap multiple lines. This will prevent unnecessarity adding extra nodes to the DOM</p>
+          <pre>
+Example
+Wrap two paragraphs inside a fragment:
+
+const myElement = (
+  &lt&gt
+    &ltp&gtI am a paragraph.&lt/p&gt
+    &ltp&gtI am a paragraph too.&lt/p&gt
+    &lt/&gt
+);</pre>
+          <div id="fragment" style="background-color: white;"></div>
+        </div>
+
+      
+      <div class="row text-primary text-center">
+        <div class="col-xs-6" style="background-color:rgb(246, 255, 168);">
+          <h4>Attribute class = className</h4>
+          <p>The class attribute is a much used attribute in HTML, but since JSX is rendered as JavaScript, and the class keyword is a reserved word in JavaScript, you are not allowed to use it in JSX.</p>
+          <p style="background-color:lightblue;">Use attribute className instead.</p>
+          <pre>
+            Example
+Use attribute className instead of class in JSX:
+
+const myElement = &lth1 className="myclass"&gtHello World&lt/h1&gt ;
+          </pre>
+          <div id="className" style="background-color: white;"></div>
+        </div>
+
+        <div class="col-xs-6" style="background-color:rgb(246, 255, 168)">
+          <h4>Conditions - if statements</h4>
+          <p>Use ternary expressions</p>
+          <pre>
+Example
+Write "Hello" if x is less than 10, otherwise "Goodbye":
+
+const x = 5;
+
+const myElement = &lth1&gt{(x) &lt 10 ? "Hello" : "Goodbye"}&lt/h1&gt ;
+          </pre>
+          <p>Note that in order to embed a JavaScript expression inside JSX, the JavaScript must be wrapped with curly braces, {}.</p>
+          <div id="ifternaryjsx" style="background-color:lightblue;">
+          
+          </div>
+        </div>
+      </div>
+      </div>
+      <hr>
+
+      <!--React COMPONENTS-->
+      <div class="row text-primary text-center">
+        <h2>Function Components</h2>
+        <!-- Simple Function Component -->
+        <div class="col-xs-6" style="background-color:rgb(121, 209, 118);">
+          <h3>Simple Function Component</h3>
+          <div id="simplefunctioncomponent" style="background-color: white;" ></div>
+        </div>
+        <!-- Function Props -->
+        <div class="col-xs-6" style="background-color:rgb(121, 209, 118); margin-bottom: 20px">
+          <h2>Props</h2>
+          <p>Components can be passed as props, which stands for properties.
+            Props are like function arguments, and you send them into the component as attributes.</p>
+          <div id="funcompprops" style="background-color: white;"></div>
+        </div>
+
+      
+        <div class="row text-primary text-center">
+          <div class="col-xs-6" style="background-color:rgb(121, 209, 118);">
+            <h2>Components in Components</h2>
+            <p>We can refer to components inside other components.</p>
+            <div id="compsincomps" style="background-color: white;"></div>
+          </div>
+
+          <div class="col-xs-6" style="background-color:rgb(121, 209, 118)">
+            <h2>Components in Files</h2>
+            <p>React is all about re-using code, and it is recommended to split your components into separate files.
+              To do that, create a new file with a .js file extension and put the code inside it:
+              Note that the filename must start with an uppercase character.
+              </p>
+              <p>To be able to use the Car component, you have to import the file in your application.</p>
+            <div id="compsinfiles" style="background-color:lightblue;"></div>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+        <!--React PROPS-->
+        <div class="row text-primary text-center">
+          <h2>React Props</h2>
+          <!-- Pass Data -->
+          <div class="col-xs-4" style="background-color:rgb(194, 118, 209);">
+            <h3>Pass Data</h3>
+            <div id="propdata" style="background-color: white;" ></div>
+          </div>
+          <!-- Pass Variables as Props -->
+          <div class="col-xs-4" style="background-color:rgb(194, 118, 209);">
+            <h2>Pass Variables as Props</h2>
+            <p>If you have a variable to send, and not a string as in the example above, you just
+              put the variable name inside curly brackets:</p>
+            <div id="propvariables" style="background-color: white;"></div>
+          </div>
+          <!-- Pass Objects as Props -->
+          <div class="col-xs-4" style="background-color:rgb(194, 118, 209);">
+            <h2>Pass Objects as Props</h2>
+            <div id="propsobjects" style="background-color: white;"></div>
+          </div>
+        </div>
+        <hr>
+
+        <!--React EVENTS-->
+        <div class="row text-primary text-center">
+          <h2>React EVENTS</h2>
+          <pre>
+React events are written in camelCase syntax:
+
+onClick instead of onclick.
+
+React event handlers are written inside curly braces:
+
+onClick={shoot}  instead of onClick="shoot()".
+          </pre>
+          <pre>
+React:
+&ltbutton onClick={shoot}&gtTake the Shot!&lt/button&gt
+
+HTML:
+&ltbutton onclick="shoot()"&gtTake the Shot!&lt/button&gt
+          </pre>
+          <!-- Adding Events -->
+          <div class="col-xs-4" style="background-color:rgb(209, 118, 118);">
+            <h3>Adding Events</h3>
+            <div id="addingevents" style="background-color: white;" ></div>
+          </div>
+          <!-- Passing Arguments to an Event -->
+          <div class="col-xs-4" style="background-color:rgb(209, 118, 118);">
+            <h2>Passing Arguments</h2>
+            <p>To pass an argument to an event handler, use an arrow function.</p>
+            <div id="addeventarguments" style="background-color: white;"></div>
+          </div>
+          <!-- Event Objects  -->
+          <div class="col-xs-4" style="background-color:rgb(209, 118, 118);">
+            <h2>Event Objects</h2>
+            <p>Event handlers have access to the React event that triggered the function.
+              In our example the event is the "click" event.</p>
+            <div id="eventObject" style="background-color: white;"></div>
+          </div>
+        </div>
+        <hr>
+
+        <!-- REACT CONDITIONAL RENDERING-->
+        <div class="row text-primary text-center">
+          <h2>React Conditional Rendering</h2>
+          <!-- if Statement -->
+          <div class="col-xs-4" style="background-color:rgb(209, 209, 118);">
+            <h3>if Statement</h3>
+            <div id="ifstatement" style="background-color: white;" ></div>
+          </div>
+          <!-- Logical && Operator -->
+          <div class="col-xs-4" style="background-color:rgb(209, 209, 118);">
+            <h2>Logical && Operator</h2>
+            <div id="andoperator" style="background-color: white;"></div>
+          </div>
+          <!-- Ternary Operator -->
+          <div class="col-xs-4" style="background-color:rgb(209, 209, 118);">
+            <h2>Ternary Operator</h2>
+            <div id="ternaryif" style="background-color: white;"></div>
+          </div>
+        </div>
+        <hr>
+
+        <!--REACT LISTS-->
+        <div class="row text-primary text-center">
+          <h2>React Lists</h2>
+          <!-- map() method -->
+          <div class="col-xs-6" style="background-color:rgb(118, 209, 144);">
+            <h3>LISTS map() Method</h3>
+            <div id="listmapmethod" style="background-color: white;" ></div>
+            <p>If you run this example in your create-react-app,
+              you will receive a warning that there is no "key" provided for the list items. To avoid this keys() is required</p>
+          </div>
+          <!-- keys() method -->
+          <div class="col-xs-6" style="background-color:rgb(118, 209, 144);">
+            <h2>KEYS</h2>
+            <p>Keys allow React to keep track of elements. This way, if an item is updated or removed, only that item will be re-rendered instead of the entire list.</p>
+            <p>Keys need to be unique to each sibling. But they can be duplicated globally.
+              Generally, the key should be a unique ID assigned to each item. As a last resort, you can use the array index as a key</p>
+            <div id="keysmap" style="background-color: white;"></div>
+          </div>
+        </div>
+        <hr>
+
+        <!--REACT FORMS-->
+        <div class="row text-primary text-center">
+          <h2>REACT FORMS</h2>
+          <!-- Adding Forms in React -->
+          <div class="col-xs-12" style="background-color:rgb(118, 209, 197); margin: 20px">
+            <h3>Adding Forms in React</h3>
+            <p>Adding a form with react like any other element. (see code)</p>
+            <p>However, in HTML for data is handled by the DOM.</p>
+            <div id="addform" style="background-color: white;" ></div>
+          </div>
+          <!-- Handling Forms -->
+          <div class="col-xs-12" style="background-color:rgb(118, 209, 197); margin: 20px">
+            <h3>HANDLING FORMS</h3>
+            <p>In React, form data is handled by the components.</p>
+            <p>When the data is handled by the component, all the data is stores in the component state.</p>
+            <p>To control the changes, it is necesary to add event handlers in the onChange attribute.</p>
+            <p>You can use the useState hook to keep track of each inputs value and provide a single source of truth for the entire application.</p>
+            <pre>
+import { useState } from "react";
+import ReactDOM from 'react-dom/client';
+
+function MyForm() {
+  const [name, setName] = useState("");
+
+  return (
+    &ltform&gt
+      &ltlabel&gtEnter your name:
+        &ltinput
+          type="text" 
+          value={name}
+          onChange={(e) =&gt setName(e.target.value)}
+        /&gt
+      &lt/label&gt
+    &lt/form&gt
+  )
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<MyForm />);</pre>
+            <div id="handlingforms" style="background-color: white;"></div>
+          </div>
+          <!-- Submitting Forms -->
+          <div class="col-xs-12" style="background-color:rgb(118, 209, 197); margin: 20px">
+            <h3>SUBMITTING FORMS</h3>
+            <p>You can control the submit action by adding an event handler in the onSubmit attribute for the &ltform&gt</p>
+            <div id="submittingforms" style="background-color: white;"></div>
+          </div>
+          <!-- Multiple Input Fields -->
+          <div class="col-xs-12" style="background-color:rgb(118, 209, 197); margin: 20px">
+            <h3>MULTIPLE INPUT FIELDS</h3>
+            <p>You can control the values of more than one inputl field by adding a name attribute to each element.</p>
+            <p>We will initialize our state with an empty object.</p>
+            <p>To access the fields in the event handler use the event.target.name and event.target.value syntax.</p>
+            <p>To update the state, use square brackets [bracket notations] around the property name.</p>
+            <div id="multiinputfields" style="background-color: white;"></div>
+            <p>We use the same ebent handler function for both input fields, we could write one event handler for each, but 
+              this gives us much cleaner code and is the preferred way in React.
+            </p>
+          </div>
+          <!-- Textarea -->
+          <div class="col-xs-12" style="background-color:rgb(118, 209, 197); margin: 20px">
+            <h3>Textarea</h3>
+            <p>In HTML the value of a textarea was the text between the start tag &lttextarea&gt and the end tag &lt/textarea&gt</p>
+            <pre>
+&lttextarea&gt
+Content of the textarea.
+&lt/textarea&gt
+            </pre>
+            <p>In React the value of a textarea is placed in a value attribute. We will use the useState Hook to manage the value of the textarea.</p>
+            <div id="textarea" style="background-color: white;"></div>
+          </div>
+          <!-- Select -->
+          <div class="col-xs-12" style="background-color:rgb(118, 209, 197); margin: 20px">
+            <h3>Select</h3>
+            <p>In React, the selected value is defined with a value attribute on the select tag.</p>
+            <div id="selecttag" style="background-color: white;"></div>
+          </div>
+        </div>
+        <hr>
+
+        <!--REACT ROUTER-->
+        <div class="row text-primary text-center">
+          <h2>React Router</h2>
+          <!-- Add React Router -->
+          <div class="col-xs-12" style="background-color:rgb(118, 148, 209);">
+            <h3>Add React Router</h3>
+            <p>To add React Router in your application, run this in the terminal from the root directory of the application:</p>
+            <pre>npm i -D react-router-dom</pre>
+          </div>
+          <!-- Basic Usage and Components -->
+          <div class="col-xs-12" style="background-color:rgb(118, 148, 209);">
+            <h3>Basic Usage and Components</h3>
+            <p>Refer to React Router in w3schools.com</p>
+            <div id="routerexample" style="background-color: white;"></div>
+          </div>
+        </div>
+        <hr>
+
+        <!--useSTATE-->
+        <div class="row text-primary text-center">
+          <h2>useState</h2>
+          <!-- Update State -->
+          <div class="col-xs-4" style="background-color:rgb(118, 180, 209);">
+            <h3>Update State</h3>
+            <div id="updatestate" style="background-color: white;" ></div>
+          </div>
+          <!-- What Can State Hold? -->
+          <div class="col-xs-4" style="background-color:rgb(118, 180, 209);">
+            <h3>What Can State Hold?</h3>
+            <p>The useState Hook can be used to keep track of strings, numbers, booleans, arrays, objects, and any combination of these!
+              We could create multiple state Hooks to track individual values.</p>
+            <div id="elementsStateHolds" style="background-color: white;"></div>
+          </div>
+          <!-- Use One State to Hold an Object -->
+          <div class="col-xs-4" style="background-color:rgb(118, 180, 209);">
+            <h2>Use One State to Hold an Object</h2>
+            <p>You can also use one state and include an object instead of using multiple Hooks!</p>
+            <p>
+              When state is updated, the entire state gets overwritten.
+              What if we only want to update the color of our car?
+              If we only called setCar({color: "blue"}), this would remove the brand, model, and year from our state.
+              We can use the JavaScript spread operator to help us.
+            </p>
+            <div id="onestateobject" style="background-color: white;"></div>
+          </div>
+          <div class="col-xs-3" style="background-color:rgb(118, 180, 209);">
+            <h2> </h2>
+            <div id=" " style="background-color: white;"></div>
+          </div>
+        </div>
+        <hr>
+
+        <!-- useEffect -->
+        <div class="row text-primary text-center" style="color: black;">
+          <h2>useEffect</h2>
+          <p>The useEffect Hook allows you to perform side effects in your components.</p>
+          <p>Some examples of side effects are: fetching data, directly updating the DOM, and timers</p>
+          <p>useEffect accepts two arguments. The second argument is optional.</p>
+          <pre>useEffect(&ltfunction&gt, &ltdependency&gt</pre>
+          <!-- Timer that does not Stop -->
+          <div class="col-xs-6" style="background-color:rgb(209, 118, 197);">
+            <h3>useEffect to Create a Timer that does not Stop</h3>
+            <div id="nonstoptimer" style="background-color: white;" ></div>
+          </div>
+          <!-- useEffect Render Only Once -->
+          <div class="col-xs-6" style="background-color:rgb(209, 118, 197);">
+            <h3>useEffect Render Only Once</h3>
+            <p>useEffect runs on every render. That means that when the count changes, a render happens, which then triggers another effect.</p>
+            <p>Ony way to control when side effect runs is including a second parameter which accepts an array.</p>
+            <div id="renderonlyonce" style="background-color: white;"></div>
+          </div>
+        </div>
+        <div class="row text-primary text-center" style="color:black;">
+          <!-- useEffect That is Dependent on a Variable -->
+          <div class="col-xs-6" style="background-color:rgb(209, 118, 197);">
+            <h2>useEffect That is Dependent on a Variable</h2>
+            <p>Here is an example of a useEffect Hook that is dependent on a variable. If the count variable updates, the effect will run again:</p>
+            <div id="variabledependance" style="background-color: white;"></div>
+          </div>
+          <!-- useEffect Cleanup -->
+          <div class="col-xs-6" style="background-color:rgb(209, 118, 197);">
+            <h2>useEffect Cleanup</h2>
+            <p>Some effects require cleanup to reduce memory leaks.
+              Timeouts, subscriptions, event listeners, and other effects that are no longer needed should be disposed.
+              We do this by including a return function at the end of the useEffect Hook.</p>
+            <div id="cleanup" style="background-color: white;"></div>
+          </div>
+        </div>
+        <hr>
+
+        <!-- React useContext Hook -->
+        <div class="row text-primary text-center" style="color: black;">
+          <h2>React useContext Hook</h2>
+          <!-- React Context -->
+          <div class="col-xs-12" style="background-color:rgb(209, 118, 153);">
+            <h3>React Context</h3>
+            <p>React Context is a way to manage state globally</p>
+            <p>It can be used together with the useState Hook to share state between deeply nested components more easily than with useState alone.</p>
+            <h3>The Problem</h3>
+            <p>State should be held by the highest parent component in the stack that requires access to the state.</p>
+            <p>To illustrate, we have many nested components. The componene at the top an bottom of the stack need access to the state;</p>
+            <p>To do this without Context, we need to pass the state as "props" through each nested component. This is called "PROP DRILLING"</p>
+            <pre>
+              Example:
+Passing "props" through nested components:
+
+import { useState } from "react";
+import ReactDOM from "react-dom/client";
+
+function Component1() {
+  const [user, setUser] = useState("Jesse Hall");
+
+  return (
+    &lt&gt
+    &lth1&gt{`Hello ${user}!`}&lt/h1&gt
+    &ltComponent2 user={user} /&gt
+    &lt/&gt
+  );
+}
+
+function Component2({ user }) {
+  return (
+    &lt&gt
+    &lth1&gtComponent 2&lt/h1&gt
+    &ltComponent3 user={user} /&gt
+    &lt/&gt
+  );
+}
+
+function Component3({ user }) {
+  return (
+    &lt&gt
+    &lth1&gtComponent 3&lt/h1&gt
+    &ltComponent4 user={user} /&gt
+    &lt/&gt
+  );
+}
+
+function Component4({ user }) {
+  return (
+    &lt&gt
+    &lth1&gtComponent 4&lt/h1&gt
+    &ltComponent5 user={user} /&gt
+    &lt/&gt
+  );
+}
+
+function Component5({ user }) {
+  return (
+    &lt&gt
+      &lth1&gtComponent 5&lt/h1&gt
+      &lth2&gt{`Hello ${user} again!`}&lt/h2&gt
+      &gt/&gt
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(&ltComponent1 /&gt);
+            </pre>
+            <p>The solution is to create context.</p>
+            <p>To do so, it is necessary to import createContext and initialize it:</p>
+            <pre>
+import { useState, createContext } from "react";
+import ReactDOM from "react-dom/client";
+
+const UserContext = createContext()
+            </pre>
+            <p>Next, use the Context Provider to wrap the tree of components that need the state Context.</p>
+            <pre>
+function Component1() {
+  const [user, setUser] = useState("Jesse Hall");
+
+  return (
+    &ltUserContext.Provider value={user}&gt
+    &lth1&gt{`Hello ${user}!`}&lt/h1&gt
+    &ltComponent2 user={user} /&gt
+    &lt/UserContext.Provider&gt
+  );
+}
+            </pre>
+            <p>Now, all components inthis tree will have access to the user Context.</p>
+            <p>To use the Context in a child component, it is necessary to access it using the useContext Hook.</p>
+            <p>First, include the useContext in the important statement:</p>
+            <pre>
+              import { useState, createContext, useContext } from "react";
+            </pre>
+            <p>Then you can access the user Context in all components:</p>
+            <pre>
+              function Component5() {
+                const user = useContext(UserContext);
+              
+                return (
+                  &lt&gt
+                    &lth1&gtComponent 5&lt/&lth1&gt
+                    &lth2&gt{`Hello ${user} again!`}&lt/h2&gt
+                    &lt/&gt
+                );
+              }
+            </pre>
+            <p>Refer to code to see the full example.</p>
+            <div id="usecontext" style="background-color: white;" ></div>
+          </div>
+        </div>
+        <hr>
+
+         <!-- useRef Hook -->
+         <div class="row text-primary text-center">
+          <h2>useRef HOOK</h2>
+          <p>The useRef Hook allows to persist values between renders.</p>
+          <p>It can be used to store a mutable value that does not cause a re-render when updated.</p>
+          <p>It can be used to access a DOM element directly.</p>
+          <!-- Does Not Cause Re-renders -->
+          <div class="col-xs-12" style="background-color:rgb(209, 118, 118);">
+            <h3>Does Not Cause Re-renders.</h3>
+            <p>If we tried to count how many times our application renders using the useState Hook, we would be caught in an infinite loop since this Hook itself causes a re-render.
+            <p>useRef() only returns one item. It returns an Object called current.
+
+              When we initialize useRef we set the initial value: useRef(0).
+              
+              It's like doing this: const count = {current: 0}. We can access the count by using count.current.</p>
+              To avoid this, we can use the useRef Hook.</p>
+            <div id="norerenders" style="background-color: white;" ></div>
+          </div>
+          <!-- Accessing DOM Elements -->
+          <div class="col-xs-12" style="background-color:rgb(209, 118, 118);">
+            <h3>Accessing DOM Elements</h3>
+            <p>In React, we can add a ref attribute to an element to acces it directly in the DOM.</p>
+            <div id="accessdomel" style="background-color: white;"></div>
+          </div>
+          <!-- Tracking State Changes -->
+          <div class="col-xs-12" style="background-color:rgb(209, 118, 118);">
+            <h3>Tracking State Changes</h3>
+            <p>The useRef Hook can also be used to keep track of previous state values.</p>
+            <p>This is because we are able to persist useRef values between renders.</p>
+            <div id="trackingstatechanges" style="background-color: white;"></div>
+            <p>This time we use a combination of useState, useEffect, and useRef to keep track of the previous state</p>
+            <p>In the useEffect, ew are updating the useRef current value each time the inputValue is update by entering text into the input field</p>
+          </div>
+        </div>
+        <hr>
+
+
+
+
+
+
+
+        <!--GENERAL FRAME-->
+        <div class="row text-primary text-center">
+          <h2> </h2>
+          <!--  -->
+          <div class="col-xs-4" style="background-color:rgb(155, 123, 123);">
+            <h3></h3>
+            <div id=" " style="background-color: white;" ></div>
+          </div>
+          <!--  -->
+          <div class="col-xs-4" style="background-color:rgb(209, 118, 118);">
+            <h3> </h3>
+            <div id=" " style="background-color: white;"></div>
+          </div>
+          <!--   -->
+          <div class="col-xs-4" style="background-color:rgb(209, 118, 118);">
+            <h3> </h3>
+            <div id=" " style="background-color: white;"></div>
+          </div>
+        </div>
+        <hr>
+
+    </div>
+  </body>
+</html>
